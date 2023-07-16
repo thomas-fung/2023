@@ -1,0 +1,384 @@
+---
+title: "On FWER Cutoffs in a Pairwise Exchangeable Setting"
+subtitle: "ISI WSC 2023"
+author: "Thomas Fung & Eugene Seneta"
+institute: "Macquarie University & The University of Sydney"
+footer: "School of Mathematical and Physical Sciences, Macquarie University"
+engine: knitr
+format: 
+  mq-revealjs:
+    width: 1920
+    height: 1080
+    self-contained: false
+    scrollable: true
+#    spotlight:
+#        toggleSpotlightOnMouseDown: true
+#        presentingCursor: default
+    # set pointer configuration options here
+#revealjs-plugins:
+#  - spotlight
+bibliography: references.bib
+---
+
+## Roadmap
+
+-   Familywise Error Rate & Stepdown Procedure
+-   Introducing some benchmark cutoffs
+-   Comparing Cutoffs
+
+------------------------------------------------------------------------
+
+::: {.columns .v-center-container}
+::: {.column width="35%"}
+![](https://raw.githubusercontent.com/thomas-fung/quarto-mq-revealjs-theme/main/_extensions/mq/MQ-diag-partial.png)
+:::
+
+::: {.column width="65%"}
+[Familywise Error Rate & Stepdown Procedure]{.section-header-text}
+:::
+:::
+
+## Familywise Error Rate {auto-animate="true"}
+
+-   Consider the multiple test problem when there are $n$ hypotheses $H_1, H_2, \ldots, H_n$.
+
+## Familywise Error Rate {visibility="uncounted" auto-animate="true"}
+
+-   Consider the multiple test problem when there are [$n$ hypotheses]{.magenta} $H_1, H_2, \ldots, H_n$.
+
+## Familywise Error Rate {visibility="uncounted" auto-animate="true"}
+
+-   Consider the multiple test problem when there are [$n$ hypotheses]{.magenta} $H_1, H_2, \ldots, H_n$.
+-   And corresponding
+    -   test statistics $X_1, X_2, \ldots, X_n$ (assuming they are from a continuous distribution);
+    -   P-values $R_1, R_2, \ldots R_n$.
+
+## Familywise Error Rate {visibility="uncounted" auto-animate="true"}
+
+-   Consider the multiple test problem when there are [$n$ hypotheses]{.magenta} $H_1, H_2, \ldots, H_n$.
+-   And corresponding
+    -   test statistics $X_1, X_2, \ldots, X_n$ (assuming they are from a continuous distribution);
+    -   P-values $R_1, R_2, \ldots R_n$.
+
+::: {.callout-note collapse="false" appearance="default" icon="true"}
+## Strongly Controlled FWE
+
+-   Suppose that in such a multiple test procedure the property: $$ 
+    \text{Pr}(H_s, s \in I_{m},\text{are accepted}| H_s, s \in I_{m} \, \text{are true}) \geq 1- \alpha 
+    $$ {#eq-FWE} holds for pre-specified size of test $\alpha$ (familywise error rate: FWER) for every $I_{m}$, where $I_{m}$ is any non-null subset of $\{1,2, \ldots, n \}$, for every $m = 1,2, \ldots, n.$
+:::
+
+## Stepdown Procedure
+
+-   Let
+    -   $R_{(1)}, R_{(2)}, \ldots, R_{(n)}$ be the ordered P-values; and
+    -   $H_{(1)}, H_{(2)}, \ldots, H_{(n)}$ be the corresponding hypothesis;\
+    -   $\Delta(i)$, $1 \leq i \leq n$ be a strictly increasing sequence of constants (aka cutoffs), with $0 < \Delta(i) < 1.$
+-   A step-down procedure begins by testing $$ R_{(1)}< \Delta(1). $$
+    -   If so, reject $H_{(1)}$ and go on to test if $R_{(2)} < \Delta(2).$
+    -   If not, accept all hypotheses.
+
+## Stepdown Procedure (cont.)
+
+-   In general, at step *j* the remaining hypotheses are $$H_{(j)}, H_{(j+1)}, \ldots,  H_{(n)},$$ and the inequality next to be checked is $$R_{(j)}< \Delta(j).$$
+    -   If it holds, reject $H_{(j)}$ and continue.
+    -   Otherwise accept $H_{(j)}, H_{(j+1)}, \ldots , H_{(n)}$.
+-   The process may continue until a decision is made on the basis of whether $$ R_{(n)}< \Delta(n). $$
+
+------------------------------------------------------------------------
+
+::: {.columns .v-center-container}
+::: {.column width="35%"}
+![](_extensions/thomas-fung/mq/MQ-diag-partial.png)
+:::
+
+::: {.column width="65%"}
+[Introducing some benchmark cutoffs]{.section-header-text}
+:::
+:::
+
+## The Original
+
+-   The step-down procedure of @holmSimpleSequentiallyRejective1979 uses the set of constants $$
+    \bar{\Delta(i)} =\frac{\alpha}{n_0}, 
+    $$ {#eq-Holm} where $$n_0 = n-i+1 \quad \& \quad 1 \leq i \leq n,$$ and Holm proved that with these constants the FWE is strongly controlled.
+
+## With Exchangeability
+
+::: {.callout-note collapse="false" appearance="default" icon="true"}
+## What is exchangeability?
+
+$(X_i, X_j)$, $i \neq j, i,j \in I_{m}$ are *exchangeable*, (so that $(R_i, R_j)$ are also) [if]{.magenta} their joint bivariate distribution is the same for each such $I_{m}$, where $I_{m}, m \geq 2$ is the index set of assumed true hypotheses.
+:::
+
+-   Note that the marginal distribution of each $R_i, i \in I_{m}, m \geq 1$ is $U(0,1)$.
+-   We introduced the notation $$H(u) = Pr(R_1 \leq u, R_2 \leq u) = Pr( \max (R_1, R_2) \leq u ), \quad u \in (0,1),$$ so that $H(u), 0 < u < 1$, is a cdf.
+
+::: notes
+$H(u)$ is also the copula $C(u_1, u_2) = Pr(R_1 \leq u_1, R_2 \leq u_2), 0 < u_1, u_2 <1$, of the bivariate joint distribution of the exchangeable pair $(X_1, X_2)$, evaluated on the diagonal $u_1 = u_2 = u$.
+:::
+
+## With Exchangeability (cont.) {visibility="uncounted" auto-animate="true"}
+
+-   @senetaSequentiallyRejectiveTest1997, Sections 4, 5 showed that with exchangeability the critical cutoff constants: $$ 
+    \tilde{\Delta}\left(i\right) = \frac{\alpha + (n_0 -1) H\left(\frac{\alpha}{n_0}\right)}{n_0},
+    $$ {#eq-CS1} are
+    -   monotonic increasing with $i$ (& decreasing with increasing $n_0$), and
+    -   the step down procedure based on them strongly controls the FWE.
+
+::: incremental
+-   Moreover the step-down procedure with $\tilde{\Delta}\left(i\right)$ provides tighter control on the FWE than Holm's $\bar{\Delta(i)}$ since $$ 
+    \tilde{\Delta}(i) > \bar{\Delta(i)} = \frac{\alpha}{n_0}, \quad  1 \leq i \leq n-1, \quad \&\quad \tilde{\Delta}(n) = \bar{\Delta(n)} = \alpha.
+    $$
+:::
+
+------------------------------------------------------------------------
+
+::: {.callout-important collapse="false" appearance="default" icon="true"}
+## How would one show a set of cutoffs to be able to strongly control of FWE?
+
+-   [Any monotonic sequence $w_1(n_0), n_0 = 1, 2, \ldots, n$ satisfying]{style="display:inline-block;"} $$
+      w_1(1) = \alpha; \quad 0  < w_1(n_0) < \alpha;\quad w_1(n_0) < w_1(n_0 -1); \quad G_{n_0}(w_1(n_0)) < \alpha,
+    $$ {#eq-statset} where $G_{n_0}(u)$ is given by $$ 
+    G_{n_0}(u) = n_0 u - (n_0 -1) H(u), \, \, 0 < u < 1,
+        $$ {#eq-G}
+-   We set $$ \Delta(i)= w_1(n_0), \quad i=1,2, \ldots , n.$$
+:::
+
+-   The cutoffs $\tilde{\Delta}\left(i\right)$ & $\bar{\Delta(i)}$ satisfy the description of such a sequence $w_1(n_0)$, $n_0 =1$, $2$, $\ldots$, $n$.
+
+::: notes
+-   This statement is implicit in Sarkar et al's reformulation of the justification in @senetaSimpleStepwiseTests2005, when specialized to the exchangeable case.
+:::
+
+## With Convexity
+
+-   @sarkarImprovingHolmProcedure2016, motivated by @senetaSimpleStepwiseTests2005's, make a substantial improvement on ([-@eq-CS1]), i.e. ${\tilde \Delta}(i)$.
+
+-   They make the overarching assumption: [$$ 
+    H(u) \text{ is convex in } u \in (0,1).
+    $$]{.magenta}
+
+::: {.callout-note collapse="true" icon="true"}
+## Convexity
+
+A function is convex if and only if for all $0 \leq t \leq 1$ and all $x_{1},x_{2}$ in its convex subset $X$, $$f\left(tx_{1}+(1-t)x_{2}\right)\leq tf\left(x_{1}\right)+(1-t)f\left(x_{2}\right)$$
+:::
+
+-   Consequently they show that the monotonic increasing cut-offs: $$ 
+      \hat{\Delta}(i) = \frac{\alpha^2/ n_0}{G_{n_0}(\alpha/n_0)}, 
+      $$ {#eq-Sark} where $G_{n_0}(u) = n_0 u - (n_0 -1) H(u), 0 < u < 1$ is defined by ([-@eq-G]) and ${\hat \Delta}(i)$ provides a tighter control on the FWE than ${\tilde \Delta}(n)$.
+
+## Iterating the cutoffs
+
+-   Given $\bar{\Delta(i)} = \frac{\alpha}{n_0}$, we can arrange ([-@eq-Sark]) so that $$ 
+    \hat{\Delta}(i) = \frac{\alpha^2/ n_0}{G_{n_0}(\alpha/n_0)} = \frac{\alpha \bar{\Delta(i)}}{G_{n_0}(\bar{\Delta(i)})}
+    $$
+-   [We can generalise this and define a]{style="display:inline-block;"} [transformer]{.magenta} function $$ 
+    w_2(n_0) \overset{def}{=} \frac{\alpha w_1(n_0)}{G_{n_0}(w_1(n_0))}, 
+    $$ {#eq-w3-asterisk} where $w_1(n_0), n_0 = 1, 2, \ldots, n$ is a set of monotonic sequence.
+
+------------------------------------------------------------------------
+
+::: {.callout-important collapse="false" appearance="default" icon="true"}
+## Theorem 1 (FWER on iterative cutoffs)
+
+-   Let $\alpha, 0 < \alpha <1,$ be a fixed constant.
+
+-   Then $$ 
+    w_2(1) = \alpha; 
+    $$ and for $n_0 \geq 2$, $$
+    0 < w_1(n_0)< w_2(n_0) < \alpha. 
+    $$ {#eq-w22-asterisk}
+
+-   If we assume $H(u)/u \uparrow, u \uparrow$, then for $n_0 \geq 2$, $$ 
+     w_2(n_0) < w_2(n_0 -1), \, \,  G_{n_0}(w_2(n_0)) < \alpha.
+    $$ {#eq-w2-asterisk} so that, from ([-@eq-statset]) & ([-@eq-G]), the cutoffs $w_2(n_0)$ strongly control the FWE.
+
+-   If there is another set of monotonic sequence $w^{*}(n_0)$ that $$
+    w_1^{*}(n_0) > w_1(n_0),  \quad n_{0} \geq 2 
+    $$ and $w_1^{*}(n_0)$ satisfies the same conditions ([-@eq-statset]) & ([-@eq-G]) as $w_1(n_0)$, and if $H(u)/u \uparrow, u \uparrow$, then $$ 
+     w_2^{*}(n_0) > w_2(n_0), \, n_0 \geq 2.  \quad \quad \Box
+    $$ {#eq-w221-asterisk}
+:::
+
+## A quick application of Theorem 1
+
+-   Since, as we have noted from ([-@eq-CS1]), $$
+    w_{1}^{*}(n_0)={\hat \Delta}(i)
+    $$ satisfies the conditions of the theorem, we conclude that $$w_2^{*}(n_0) > \hat{ \Delta}(i),$$ and the cutoffs $w_2^{*}(n_0)$ provide tighter control on FWE than $\hat{\Delta}(i)$.
+
+## Some observation from Theorem 1 {auto-animate="true"}
+
+-   In both @sarkarImprovingHolmProcedure2016 and in its Supplementary Materials, much attention is focussed on the problem of verifying the [convexity assumption of $H(u)$, $0 < u < 1$.]{.magenta}
+-   According to the Theorem above, the conditions for the copula $H(u)$, to obtain the same conclusion, are milder.
+-   Further, the validity of ([-@eq-w2-asterisk]) and ([-@eq-w221-asterisk]) can be checked directly from the values of $w_2(n_0)$, and the values of {$w_i(n_0), w_i^{*}(n_0), i=1,2$} respectively in a testing setting, without knowledge such as $H(u)/u \uparrow, u \uparrow$, which removes the dependence on such a condition in statistical application.
+-   We make use of this fact later, in an example when the condition $H(u)/u \uparrow, u \uparrow$ cannot be analytically verified.
+
+------------------------------------------------------------------------
+
+::: {.columns .v-center-container}
+::: {.column width="35%"}
+![](_extensions/thomas-fung/mq/MQ-diag-partial.png)
+:::
+
+::: {.column width="65%"}
+[Comparing Cutoffs]{.section-header-text}
+:::
+:::
+
+## Comparing Cutoffs {auto-animate="true"}
+
+-   For comparisons of the differential effects of various cutoffs, we use the familywise error rate (FWER) as a function of $\rho$ as the means of comparison.
+
+-   This is in general defined as $$
+    \text{Pr}(\text{Reject at least one }  H_i, i= 1,2, \ldots , n| H_i, i= 1,2, \ldots , n \ \text{are all true}).$$
+
+-   Thus for the stepdown procedure $$
+    \begin{aligned}
+    \text{FWER} &= \text{Pr}(R_{(1)} < \Delta (1)| H_i,  i= 1,2, \ldots , n \ \text{are all true}) \\ 
+    &= \text{Pr}(\min_{i=1,2, \ldots , n}X_i < F_X^{-1}(\Delta (1))| H_i,  i= 1,2, \ldots , n \ \text{are all true})
+    \end{aligned}
+    $$ {#eq-FWER1} for fixed $j=1,2$, in terms of sample values $X_i, i=1,2, \ldots , n$, where $F_X(x)$ is the marginal cdf of $X_i$.
+
+-   The expression ([-@eq-FWER1]) may be estimated from repeated simulation of the sample $X_i, i=1,2, \ldots , n$, once $F_X^{-1}(\Delta (1)))$ is numerically calculated.
+
+## {auto-animate="true"}
+
+:::{.callout-note collapse=false appearance='default' icon=true}
+## The Generalized Hyperbolic Distribution
+-   The multivariate skew GH distribution, $GH(0,R_n,\boldsymbol{\theta},p,a,b)$ which we take as the joint distribution of our test-statistics $\textbf{X} = (X_1, X_2, \ldots ,X_n)^{\top}$ to have is defined by its mean-variance mixing representation as $$
+    \textbf{X} = \boldsymbol{\mu}+ \boldsymbol{\theta} W + \sqrt{W}\textbf{Z}  
+    $$ {#eq-define-skew-GH} where $\boldsymbol{\mu} = (\mu_1, \mu_2, \ldots ,\mu_n)^{\top}$, $\boldsymbol{\theta} = (\theta_1,\theta_2, \ldots, \theta_n)^{\top}$, and $W \sim GIG(p,a,b)$ is independently distributed of $\textbf{Z} \sim N(0, R_n)$.
+-   Here $R_n =(1-\rho) \boldsymbol{I}_n + \rho 1_n 1_n^{\top}$, with $-1<\rho<1$, so that $R_2 = \left( \begin{smallmatrix} 1 & & \rho \\ \\ \rho & & 1\end{smallmatrix}\right)$.
+-   We assume that the random variable $W$ has a (univariate) Generalised Inverse Gaussian (GIG) distribution, denoted by $GIG(p,a,b)$, that is, it has density $$
+    \begin{aligned}
+    f_{GIG}(w) =& \frac{1}{2\overline{K}_{p}(a,b)}w^{p-1}\exp(-\frac{1}{2}(a^2w^{-1}+b^2w)), \quad  w>0; 
+    \\
+    =& 0, \quad \text{otherwise;}
+    \end{aligned} 
+    $$ {#eq-density:GIG} where $$ 
+     \overline{K}_{p}(a,b) = \begin{cases}
+     (\frac{a}{b})^{p}K_{p}(ab),
+     &\text{ $p \in \mathbb{R}$, if  $a,b >0$;}\\
+     b^{-2p}\Gamma(p)2^{p-1}, &\text{
+     $p ,b>0$, if $a=0$;}\\
+     a^{2p}\Gamma(-p)2^{-p-1}, &\text{
+     $a>0$ and $p <0$, if  $b=0$,}
+     \end{cases}
+    $$ {#eq-Kbar}
+-   Here $K_{p}(\omega), \omega >0$, is the modified Bessel function of the second kind (@erdelyiBatemanManuscriptProject1954) with index $p \in \mathbb{R}$.
+:::
+
+--- 
+
+## {auto-animate="true"}
+
+:::{.callout-note collapse=false appearance='default' icon=true}
+## The Generalized Hyperbolic Distribution. Tests. (cont.) 
+
+-   We take for, $i=1,2,\ldots , n$, our $i$th null hypothesis as: [$H_i: \mu_i = \theta_i = 0$]{.magenta}, so that when all $H_i$ are true, $$  
+    \textbf{X} =  \sqrt{W}\textbf{Z},
+    $$ {#eq-GH1} and similarly for any subset of indices $\{1,2, \ldots, n \},$ so that exchangeability holds, and the other assumptions discussed under the [Exchangeability Context]{.magenta} hold.
+
+-   Then the distribution functions of the $X_i$ are the same: $F_i(u) = F_1(u)$.
+
+-   The marginal density of $X_1$ is then given by $$ 
+      f_{X_1}(x) = \frac{\overline{K}_{p-1/2}((x^2 +a^2)^{1/2}, b)}{{\sqrt{2\pi}\, {\overline{K}}_p(a,b)}}, \quad x \in  \mathbb{R}.
+    $$ {#eq-X1density}
+
+-   [The case $b=0$ of ([-@eq-GH1]) encompasses the symmetric multivariate $t$-distribution]{.magenta}, which has been studied as a central example in @sarkarImprovingHolmProcedure2016.
+
+:::
+
+## {auto-animate="true"}
+
+:::{.callout-note collapse=false appearance='default' icon=true}
+## The Generalized Hyperbolic Distribution. Tests. (cont.) 
+
+-   We therefore take up an example to [illustrate the case $b>0$]{.magenta}. 
+    - This setting for exchangeability is additional to the various examples considered by @sarkarSimesMethodMultiple1997 and @sarkarImprovingHolmProcedure2016.
+
+-   The Variance Gamma (VG) distribution, which is a special case, when $a=0$, $b = \sqrt{\frac{2}{\nu}}$, $p=\frac{1}{2}$, is important in financial mathematics modelling. 
+
+    - The case $b>0$ has been studied extensively in the bivariate case ($n=2$), by @fungTailAsymptoticsBivariate2016, and this bivariate case is central, as we have seen, to the role of the copula $H(u)$ in our exchangeable setting.
+
+-   The only issue is that we have not been able to establish the general property $H(u)/u \uparrow$ as $u \uparrow$ in the exchangeable setting. 
+
+::: 
+
+## Simulation
+
+:::{.callout-important collapse=false appearance='default' icon=true}
+## Setting
+-   We plotted the error rate in the multivariate GH setting with $$ 
+    a = 0, p = 4, b = 0.5, \alpha = 0.05, n = 16
+    $$ for various values of common correlation $\rho$ and two sets of cutoff constants (from @sarkarImprovingHolmProcedure2016 and by iterating @senetaSequentiallyRejectiveTest1997)
+    $$
+    \begin{aligned}
+    \hat{\Delta}(i) & = \frac{\alpha^2/ n_0}{G_{n_0}(\alpha/n_0)},  \\
+    w_2(n_0) & = \frac{\alpha w_1(n_0)}{G_{n_0}(w_1(n_0))}, \quad w_1(n_0)= \tilde{\Delta}\left(i\right) = \frac{\alpha + (n_0 -1) H\left(\frac{\alpha}{n_0}\right)}{n_0}
+    \end{aligned}
+    $$
+-   100,000 independent replications were used in all simulations.
+
+-   The smoothed line is provided by a GAM fit.
+
+:::
+
+
+## Simulation Results 
+
+- Given that we haven't been able to analytically verified that $H(u)/u \uparrow$, as $u \uparrow$, for the exchangable GH case, we have to check the conditions  numerically to ensure the iterative cutoffs $w_2(n_0)$ are strongly controlling FWER. 
+
+```{r}
+#| message: false
+library(tidyverse)
+library(kableExtra)
+dat <- read_csv("strong_control_example.csv")
+knitr::kable(dat, digits = 5, booktabs = TRUE) %>% 
+  kable_styling(bootstrap_options = c("striped", "hover", "condensed", "responsive"), full_width = F, font_size = 28)
+```
+
+## Simulation Results (cont.)
+
+```{r}
+#| fig-cap: Comparing the familywise error rate with cutoff constants $\hat{\Delta}(i)$ and $w_2(n_0)$
+#| fig-align: "center"
+#| label: fig-FWER_GH_comparison1
+#| 
+library(latex2exp)
+results2 <- read_csv(file = "FWER_GH_results_n_100000.csv")
+tex_label3 <- unname(TeX(c("$\\hat{\\Delta}(i)$", 
+                                             "$w_2(n_0)$"))
+  )
+p2 <- ggplot(results2 %>% filter(type %in% c("Algo1 w2", "Algo2 w2")), aes(x = rho, y = FWER, 
+                    colour = type, group = type, linetype = type)) +
+  geom_smooth(method = "gam", se=FALSE) + 
+  geom_point(alpha = 0.3, show.legend = F) + 
+  ggtitle(TeX("Comparing the FWER with cutoff constants $\\hat{\\Delta}(i)$ and $w_2(n_0)$"), 
+          subtitle = TeX("Multivariate GH with $n = 16$")) + 
+  xlab(TeX("$\\rho$")) + 
+  ylim(c(0, 0.055)) + 
+  theme_bw() +
+  labs(colour = "Type", linetype = "Type") + 
+  scale_color_discrete(labels = tex_label3) + 
+  scale_linetype_discrete(labels = tex_label3)
+p2
+# ggsave("FWER_GH1_isi.png", plot = p2, width = 8, height = 4)
+```
+
+- From @fig-FWER_GH_comparison1, we can see $w_2(n_0)$
+provided tighter control of FWE for high values of $\rho$ than $\hat{\Delta}(i)$ but performance was indistinguishable otherwise.
+
+## Thanks!
+
+#### Thomas Fung
+
+-   [`r icons::fontawesome("paper-plane")` thomas.fung\@mq.edu.au](mailto:thomas.fung@mq.edu.au)
+
+-   [`r icons::fontawesome("twitter")` \@thomasfungdr](http://twitter.com/thomasfungdr)
+
+-   [`r icons::fontawesome("github")` \@thomas-fung](http://github.com/thomas-fung)
+
+## References

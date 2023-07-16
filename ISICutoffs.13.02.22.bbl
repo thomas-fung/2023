@@ -1,0 +1,66 @@
+\begin{thebibliography}{7}
+\providecommand{\natexlab}[1]{#1}
+\providecommand{\url}[1]{\texttt{#1}}
+\expandafter\ifx\csname urlstyle\endcsname\relax
+  \providecommand{\doi}[1]{doi: #1}\else
+  \providecommand{\doi}{doi: \begingroup \urlstyle{rm}\Url}\fi
+
+\bibitem[Erd{\'e}lyi et~al.(1954)Erd{\'e}lyi, Magnus, Oberhettinger, and
+  Tricomi]{erdelyiBatemanManuscriptProject1954}
+A.~Erd{\'e}lyi, W.~Magnus, F.~Oberhettinger, and F.~Tricomi.
+\newblock \emph{Bateman {{Manuscript Project}}: {{Tables}} of {{Integral
+  Transform}}}, volume~2.
+\newblock {McGraw-Hill}, {New York}, 1954.
+
+\bibitem[Fung and Seneta(2016)]{fungTailAsymptoticsBivariate2016}
+T.~Fung and E.~Seneta.
+\newblock Tail asymptotics for the bivariate skew normal.
+\newblock \emph{Journal of Multivariate Analysis}, 144:\penalty0 129--138, Feb.
+  2016.
+\newblock ISSN 0047259X.
+\newblock \doi{10.1016/j.jmva.2015.11.002}.
+
+\bibitem[Holm(1979)]{holmSimpleSequentiallyRejective1979}
+S.~Holm.
+\newblock A {{Simple Sequentially Rejective Multiple Test Procedure}}.
+\newblock \emph{Scandinavian Journal of Statistics}, 6\penalty0 (2):\penalty0
+  65--70, 1979.
+\newblock ISSN 0303-6898.
+
+\bibitem[Sarkar and Chang(1997)]{sarkarSimesMethodMultiple1997}
+S.~K. Sarkar and C.-K. Chang.
+\newblock The {{Simes Method}} for {{Multiple Hypothesis Testing With
+  Positively Dependent Test Statistics}}.
+\newblock \emph{Journal of the American Statistical Association}, 92\penalty0
+  (440):\penalty0 1601--1608, 1997.
+\newblock ISSN 0162-1459.
+\newblock \doi{10.2307/2965431}.
+
+\bibitem[Sarkar et~al.(2016)Sarkar, Fu, and
+  Guo]{sarkarImprovingHolmProcedure2016}
+S.~K. Sarkar, Y.~Fu, and W.~Guo.
+\newblock Improving holm's procedure using pairwise dependencies.
+\newblock \emph{Biometrika}, 103\penalty0 (1):\penalty0 237--243, 03 2016.
+\newblock \doi{10.1093/biomet/asv063}.
+\newblock URL
+  \url{https://academic.oup.com/biomet/article-lookup/doi/10.1093/biomet/asv063}.
+\newblock tex.ids= sarkarSupplementaryMaterialImproving2015.
+
+\bibitem[Seneta and Chen(2005)]{senetaSimpleStepwiseTests2005}
+E.~Seneta and J.~T. Chen.
+\newblock Simple {{Stepwise Tests}} of {{Hypotheses}} and {{Multiple
+  Comparisons}}.
+\newblock \emph{International Statistical Review / Revue Internationale de
+  Statistique}, 73\penalty0 (1):\penalty0 21--34, 2005.
+\newblock ISSN 0306-7734.
+
+\bibitem[Seneta and Chen(1997)]{senetaSequentiallyRejectiveTest1997}
+E.~Seneta and T.~Chen.
+\newblock A sequentially rejective test procedure.
+\newblock \emph{Theory of Stochastic Processes}, 3\penalty0 (19):\penalty0
+  393--402, 1997.
+\newblock \doi{https://www.maths.usyd.edu.au/u/eseneta/SenetaChen(1997).pdf}.
+\newblock URL
+  \url{https://www.maths.usyd.edu.au/u/eseneta/SenetaChen(1997).pdf}.
+
+\end{thebibliography}

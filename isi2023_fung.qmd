@@ -20,11 +20,54 @@ format:
 bibliography: references.bib
 ---
 
+## IASC-ARS 2023 @ Macquarie University, Sydney, Australia
+
+:::: {.columns}
+
+::: {.column width='60%'}
+
+- The 12^th^ conference for the Asian Regional Section (ARS) of the International Association for Statistical Computing (IASC) will be held on [6-8 Dec 2023 at Sydney, Australia]{.magenta}.
+ 
+- Conference website: https://iascars2023.netlify.app
+
+- [We are currently looking for invited session proposal.]{.magenta} 
+
+- And Submissions can be made by e-mail to iascars2023@gmail.com. 
+ 
+- Please forward this message to your colleagues and encourage them to organise the invited sessions for IASC-ARS 2023.
+
+:::
+
+::: {.column width='40%'}
+
+![](figures/Sydney_Opera_House_Sails.jpg)
+:::
+
+::::
+
+
+
+
 ## Roadmap
 
 -   Familywise Error Rate & Stepdown Procedure
 -   Introducing some benchmark cutoffs
 -   Comparing Cutoffs
+
+:::: {.columns}
+
+::: {.column width='50%'}
+![ISI Paper](figures/ISI-paper.png){width=3in}
+:::
+
+::: {.column width='50%'}
+![Full paper](figures/Full-paper.png){width=3in}
+
+:::
+
+::::
+
+Fung, T. and Seneta, E. (2023) ‘On Familywise Error Rate Cutoffs under Pairwise Exchangeability’, Methodology and Computing in Applied Probability, 25(2), p. 59. Available at: https://doi.org/10.1007/s11009-023-10018-1.
 
 ------------------------------------------------------------------------
 

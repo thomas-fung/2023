@@ -370,7 +370,7 @@ A function is convex if and only if for all $0 \leq t \leq 1$ and all $x_{1},x_{
 :::
 
 
-## Simulation Results 
+## Checking $w_2(n_0)$ can strongly control FWER
 
 - Given that we haven't been able to analytically verified that $H(u)/u \uparrow$, as $u \uparrow$, for the exchangable GH case, we have to check the conditions  numerically to ensure the iterative cutoffs $w_2(n_0)$ are strongly controlling FWER. 
 
